@@ -20,9 +20,12 @@ function autoNarutoEgg()
     while getgenv().autoNarutoEgg do
         wait()
         local args = {
-            [1] = workspace.Worlds.Naruto.NarutoEgg, 
+            [1] = workspace.Worlds.Naruto.NarutoEgg,
+            [2] = 999
+            
         }
         game:GetService("ReplicatedStorage").Remote.OpenEgg:InvokeServer(unpack(args))
+        
         end
     end    
 
