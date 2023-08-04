@@ -5,7 +5,7 @@ if game.PlaceId == 6299805723 then
 
 getgenv().autoAttack = true
 
-getgenv().autoEgg = true
+getgenv().autoNarutoEgg = true
 
 getgenv().SpinWheel = true
 
@@ -16,12 +16,11 @@ function autoAttack()
     end
 end
 
-function autoEgg()
-    while getgenv().autoEgg do
+function autoNarutoEgg()
+    while getgenv().autoNarutoEgg do
         wait()
         local args = {
-            [1] = workspace.Worlds.Naruto.NarutoEgg,
-            [2] = 1
+            [1] = workspace.Worlds.Naruto.NarutoEgg, 
         }
         game:GetService("ReplicatedStorage").Remote.OpenEgg:InvokeServer(unpack(args))
         end
@@ -62,8 +61,8 @@ EggTab:AddToggle({
 Name = "Auto Hatch Naruto Egg",
 Default = false,
 Callback = function(Value)
-    getgenv().autoEgg = Value
-    autoEgg()
+    getgenv().autoNarutoEgg = Value
+    autoNarutoEgg()
 end    
 })
 
