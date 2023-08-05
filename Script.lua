@@ -5,11 +5,10 @@ if game.PlaceId == 6299805723 then
 
 getgenv().autoAttack = true
 
-getgenv().autoNarutoEgg = true
+getgenv().autoBleachEgg = true
 
-getgenv().SpinWheel = true
 
-getgenv().ClaimGift = true
+
 
 function autoAttack()
     while getgenv().autoAttack == true do
@@ -17,114 +16,35 @@ function autoAttack()
         wait(0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010)
     end
 end
- 
-    function SpinWheel()
-        while getgenv().SpinWheel == true do
-            game:GetService("ReplicatedStorage").Remote.DailySpin:FireServer()     
-            end
-        end
 
-        function ClaimGift()
-            while getgenv().ClaimGift == true do
-                wait()
-                local args = {
-                    [1] = 1
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-                
-                local args = {
-                    [1] = 2
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-                
-                local args = {
-                    [1] = 3
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-                
-                local args = {
-                    [1] = 4
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-                
-                local args = {
-                    [1] = 5
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
 
-                local args = {
-                    [1] = 6
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-                
-                local args = {
-                    [1] = 7
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
+function autoBleach2Egg()
+    while getgenv().autoBleach2Egg == true do
+        wait()
+        local args = {
+            [1] = "BTYBWEgg"
+        }
+        
+        game:GetService("ReplicatedStorage").Remote.AttemptMultiOpen:FireServer(unpack(args))                                                
+        
+    end
+end
 
-                local args = {
-                    [1] = 8
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
 
-                local args = {
-                    [1] = 9
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
+function autoBleachEgg()
+    while getgenv().autoBleachEgg == true do
+        wait()
+        local args = {
+            [1] = workspace.Worlds.BTYBW.BTYBWEgg,
+            [2] = 999
+        }
+        
+        game:GetService("ReplicatedStorage").Remote.OpenEgg:InvokeServer(unpack(args))                                                          
+        
+    end
+end
 
-                local args = {
-                    [1] = 10
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
 
-                local args = {
-                    [1] = 11
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-
-                local args = {
-                    [1] = 12
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-
-                local args = {
-                    [1] = 13
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-
-                local args = {
-                    [1] = 14
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-
-                local args = {
-                    [1] = 15
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-                
-                local args = {
-                    [1] = 16
-                }
-                
-                game:GetService("ReplicatedStorage").Remote.ClaimGift:FireServer(unpack(args))
-
-                end
-            end
 
 local FarmTab = Window:MakeTab({
     Name = "Farm",
@@ -143,36 +63,46 @@ end
 })
 
 
+
+
+local MaxTab = Window:MakeTab({
+    Name = "Max Open",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+
+MaxTab:AddToggle({
+Name = "Auto Max Open Bleach 2 Egg",
+Default = false,
+Callback = function(Value)
+    getgenv().autoBleach2Egg = Value
+    autoBleach2Egg()
+end    
+})
+
+local MultiTab = Window:MakeTab({
+    Name = "Multi Open",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+MultiTab:AddToggle({
+	Name = "Auto Multi Open BTYW",
+	Default = false,
+	Callback = function(Value)
+		getgenv().autoBleachEgg = Value
+        autoBleachEgg()
+	end    
+})
+
+
 local MiscTab = Window:MakeTab({
     Name = "Misc",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
-
-
-MiscTab:AddButton({
-Name = "Spin Wheel",
-Default = false,
-Callback = function(Value)
-    getgenv().SpinWheel = Values
-    SpinWheel()
-end    
-})
-
-local args = {
-    [1] = 1
-}
-
-
-MiscTab:AddToggle({
-    Name = "Claim Gift",
-    Default = false,
-    Callback = function(Value)
-        getgenv().ClaimGift = Values
-        ClaimGift()
-    end    
-    })
 
 
 end
