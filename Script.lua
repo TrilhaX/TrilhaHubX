@@ -18,6 +18,20 @@ function autoAttack()
 end
 
 
+function autoSlayer2Egg()
+    while getgenv().autoSlayer2Egg == true do
+        wait()
+        local args = {
+            [1] = "DemonSlayer2Egg"
+        }
+        
+        game:GetService("ReplicatedStorage").Remote.AttemptMultiOpen:FireServer(unpack(args))                                                
+        
+    end
+end
+
+
+
 function autoBleach2Egg()
     while getgenv().autoBleach2Egg == true do
         wait()
@@ -44,6 +58,20 @@ function autoBleachEgg()
     end
 end
 
+
+function autoSlayerEgg()
+    while getgenv().autoSlayerEgg == true do
+        wait()
+        local args = {
+            [1] = workspace.Worlds.DemonSlayer2.DemonSlayer2Egg,
+            [2] = 999
+        }
+        
+        game:GetService("ReplicatedStorage").Remote.OpenEgg:InvokeServer(unpack(args))                                                                  
+                                         
+        
+    end
+end
 
 
 local FarmTab = Window:MakeTab({
@@ -73,7 +101,18 @@ local MaxTab = Window:MakeTab({
 
 
 MaxTab:AddToggle({
-Name = "Auto Max Open Bleach 2 Egg",
+    Name = "Auto Max Open Slayer Egg",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autoSlayer2Egg = Value
+        autoSlayer2Egg()
+    end    
+    })
+
+
+
+MaxTab:AddToggle({
+Name = "Auto Max Open BTYW Egg",
 Default = false,
 Callback = function(Value)
     getgenv().autoBleach2Egg = Value
@@ -86,6 +125,21 @@ local MultiTab = Window:MakeTab({
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
+
+
+
+MultiTab:AddToggle({
+    Name = "Auto Multi Open Slayer",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autoSlayerEgg = Value
+        autoSlayerEgg()
+    end    
+    })
+
+
+
+
 
 MultiTab:AddToggle({
 	Name = "Auto Multi Open BTYW",
